@@ -25,15 +25,11 @@ const Form: FC<Props> = (props) => {
       <Title text="Create a new account" />
 
       <form action="" method="post">
-        <div>
-          <input type="text" placeholder="name" />
-        </div>
-        <div>
-          <input type="email" placeholder="email" />
-        </div>
-        <div>
-          <input type="password" placeholder="password" />
-        </div>
+        {state.map(({ type, placeholder }) => (
+          <div key={type}>
+            <TextInput type={type} placeholder={placeholder} />
+          </div>
+        ))}
         <div>
           <select name="" id="">
             <option value=""></option>
