@@ -22,9 +22,8 @@ const Form: FC<Props> = (props) => {
         borderRadius: "8px",
       }}
     >
-      <div>
-        <h5>Create a new account</h5>
-      </div>
+      <Title text="Create a new account" />
+
       <form action="" method="post">
         <div>
           <input type="text" placeholder="name" />
