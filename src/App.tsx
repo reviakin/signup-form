@@ -1,18 +1,11 @@
 import React from "react";
-import { Background } from "./Background";
-
-const bgdColor = "#102250";
+import { Signup } from "./Signup";
 
 function App() {
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-      }}
-    >
-      <Background color={bgdColor} />
+    <div>
+      {/* Good luck! */}
+      <Signup />
     </div>
   );
 }
