@@ -2,6 +2,11 @@ import React, { FC, useState } from "react";
 import { TextInput } from "./TextInput";
 import { Title } from "./Title";
 
+type Input = {
+  type: "text" | "password" | "email";
+  placeholder: string;
+};
+
 type Props = {};
 
 const Form: FC<Props> = (props) => {
