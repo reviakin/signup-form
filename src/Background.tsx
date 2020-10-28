@@ -9,6 +9,7 @@ const Background: FC<Props> = ({ color }) => (
       width: "100%",
       height: "100%",
       position: "absolute",
+      zIndex: -1,
     }}
   />
 );
