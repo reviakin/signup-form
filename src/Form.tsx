@@ -3,6 +3,12 @@ import React, { FC } from "react";
 type Props = {};
 
 const Form: FC<Props> = (props) => {
+  const [state, setState] = useState<Input[]>([
+    { type: "text", placeholder: "name" },
+    { type: "email", placeholder: "email" },
+    { type: "password", placeholder: "password" },
+  ]);
+
   return (
     <div
       style={{
