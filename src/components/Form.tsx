@@ -3,6 +3,7 @@ import { TextInput } from "./TextInput";
 import { Title } from "./Title";
 import { map } from "lodash/fp";
 import { RadioInput } from "./RadioInput";
+import { Box, logIt } from "../tools";
 
 interface ITextInput {
   readonly type: "text" | "password" | "email";
@@ -68,7 +69,9 @@ const Form: FC<Props> = (props) => {
   const onTextInputChangeHandler = ({
     target: { name, value },
   }: React.ChangeEvent<HTMLInputElement>) =>
-    dispatch({ type: "UPDATE_VALUE", payload: { name, value } });
+    Box({ name, value })
+      .map(logIt)
+      .fold((payload) => dispatch({ type: "UPDATE_VALUE", payload }));
 
   return (
     <div
