@@ -6,6 +6,9 @@ type Props = {
   value: string;
   changeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
+  required?: boolean;
+  minLength?: number;
+  pattern?: string;
 };
 
 const TextInput: FC<Props> = ({
@@ -14,6 +17,9 @@ const TextInput: FC<Props> = ({
   value,
   changeHandler,
   name,
+  required,
+  minLength,
+  pattern,
 }) => (
   <input
     type={type}
@@ -21,6 +27,9 @@ const TextInput: FC<Props> = ({
     value={value}
     onChange={changeHandler}
     name={name}
+    required={required}
+    minLength={minLength}
+    pattern={pattern}
   />
 );
 
