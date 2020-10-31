@@ -1,77 +1,14 @@
-import React, { FC, useReducer } from "react";
+import React, { FC } from "react";
 import { TextInput } from "./TextInput";
 import { Title } from "./Title";
 import { map } from "lodash/fp";
 import { RadioInput } from "./RadioInput";
-import { Box, logIt } from "../tools";
-
-interface ITextInput {
-  readonly type: "text" | "password" | "email";
-  readonly placeholder: string;
-  readonly name: string;
-  value: string;
-}
-
-interface IRadioInput {
-  readonly name: string;
-  readonly options: string[];
-  readonly type: "radio";
-  value: null | string;
-}
-
-type Input = IRadioInput | ITextInput;
-
-type State = Input[];
-
-type UpdateValueAction = {
-  type: "UPDATE_VALUE";
-  payload: {
-    name: string;
-    value: string;
-  };
-};
-
-type Actions = UpdateValueAction;
-
-const initState: State = [
-  { type: "text", placeholder: "name", value: "", name: "name" },
-  { type: "email", placeholder: "email", value: "", name: "email" },
-  {
-    type: "password",
-    placeholder: "password",
-    value: "",
-    name: "password",
-  },
-  {
-    type: "radio",
-    name: "gender",
-    options: ["male", "female"],
-    value: null,
-  },
-];
-
-const reducer = (state: State, action: Actions): State => {
-  if (action.type === "UPDATE_VALUE") {
-    const { name, value } = action.payload;
-    return map(
-      (input) => (input.name === name ? { ...input, value } : input),
-      state
-    );
-  }
-  return state;
-};
+import { useForm } from "../tools";
 
 type Props = {};
 
 const Form: FC<Props> = (props) => {
-  const [state, dispatch] = useReducer(reducer, initState);
-
-  const onTextInputChangeHandler = ({
-    target: { name, value },
-  }: React.ChangeEvent<HTMLInputElement>) =>
-    Box({ name, value })
-      .map(logIt)
-      .fold((payload) => dispatch({ type: "UPDATE_VALUE", payload }));
+  const [state, { change }] = useForm();
 
   return (
     <div
@@ -95,9 +32,12 @@ const Form: FC<Props> = (props) => {
                 <TextInput
                   type={input.type}
                   placeholder={input.placeholder}
-                  changeHandler={onTextInputChangeHandler}
+                  changeHandler={change}
                   name={input.name}
                   value={input.value}
+                  required={input.validation.required}
+                  minLength={input.validation.minLength}
+                  pattern={input.validation.pattern}
                 />
               </div>
             ) : (
@@ -106,7 +46,7 @@ const Form: FC<Props> = (props) => {
                 name={input.name}
                 options={input.options}
                 value={input.value}
-                onChange={onTextInputChangeHandler}
+                onChange={change}
               />
             ),
           state
