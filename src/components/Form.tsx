@@ -3,14 +3,15 @@ import { TextInput } from "./TextInput";
 import { compose, map } from "lodash/fp";
 import { RadioInput } from "./RadioInput";
 import { useForm } from "../tools";
-import { State } from "../tools/hooks/types";
+import { Input, State } from "../tools/hooks/types";
 
 type Props = {
   submit: (state: State) => void;
+  inputs: Input[];
 };
 
-const Form: FC<Props> = ({ submit }) => {
-  const [state, { change }] = useForm();
+const Form: FC<Props> = ({ submit, inputs }) => {
+  const [state, { change }] = useForm(inputs);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) =>
     compose(

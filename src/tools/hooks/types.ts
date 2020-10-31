@@ -17,7 +17,7 @@ interface IRadioInput {
   value: null | string;
 }
 
-type Input = IRadioInput | ITextInput;
+export type Input = IRadioInput | ITextInput;
 
 type UpdateValueAction = {
   type: "UPDATE_VALUE";

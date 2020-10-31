@@ -1,51 +1,8 @@
 import { useReducer, useCallback } from "react";
 
-import { map, find } from "lodash/fp";
+import { map } from "lodash/fp";
 
-import { State, Actions } from "./types";
-
-const initState: State = {
-  isValid: false,
-  inputs: [
-    {
-      type: "text",
-      placeholder: "name",
-      value: "",
-      name: "name",
-      validation: {
-        pattern: "[a-zA-Z]+",
-        required: true,
-      },
-    },
-    {
-      type: "text",
-      placeholder: "email",
-      value: "",
-      name: "email",
-      validation: {
-        pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
-        required: true,
-      },
-    },
-    {
-      type: "password",
-      placeholder: "password",
-      value: "",
-      name: "password",
-      validation: {
-        pattern: "",
-        required: true,
-        minLength: 6,
-      },
-    },
-    {
-      type: "radio",
-      name: "gender",
-      options: ["male", "female"],
-      value: null,
-    },
-  ],
-};
+import { State, Actions, Input } from "./types";
 
 const reducer = (state: State, action: Actions): State => {
   if (action.type === "UPDATE_VALUE") {
@@ -61,11 +18,10 @@ const reducer = (state: State, action: Actions): State => {
   return state;
 };
 
-function useForm(): [
-  State,
-  { change: (event: React.ChangeEvent<HTMLInputElement>) => void }
-] {
-  const [state, dispatch] = useReducer(reducer, initState);
+function useForm(
+  inputs: Input[]
+): [State, { change: (event: React.ChangeEvent<HTMLInputElement>) => void }] {
+  const [state, dispatch] = useReducer(reducer, { inputs, isValid: false });
 
   const onInputChangeHandler = useCallback(
     ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) =>
