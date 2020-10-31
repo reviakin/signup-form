@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { State } from "../tools/hooks/types";
 import { Background } from "./Background";
 import { Form } from "./Form";
 import { Title } from "./Title";
@@ -44,13 +43,13 @@ const inputs: Input[] = [
   {
     type: "radio",
     name: "gender",
-    options: ["male", "female"],
+    options: ["MALE", "FEMALE"],
     value: null,
   },
 ];
 
 const Signup: FC<Props> = (props) => {
-  const onSubmit = (state: State) => console.log(state);
+  const onSubmit = (input: any) => console.log(input);
 
   return (
     <div
