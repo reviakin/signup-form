@@ -68,7 +68,13 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
         {loading ? (
           <Loader />
         ) : (
-          <Button label="Sign up" disabled={!state.isValid} />
+          <Button
+            label="Signup"
+            disabled={!state.isValid}
+            width={343}
+            height={62}
+            type="rounded"
+          />
         )}
       </div>
     </form>
