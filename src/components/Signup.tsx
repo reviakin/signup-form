@@ -2,54 +2,47 @@ import React, { FC } from "react";
 import { Background } from "./Background";
 import { Form } from "./Form";
 import { Title } from "./Title";
-import { Input } from "../tools/hooks/types";
+import { signUpInputs } from "../data";
+import {} from "module";
+import { gql, useMutation } from "@apollo/client";
+import { Box, logIt } from "../tools";
+
+const SIGN_UP = gql`
+  mutation Signup($input: SignupInput!) {
+    newUser: signup(input: $input) {
+      id
+      name
+      email
+      country
+      gender
+    }
+  }
+`;
 
 const bgdColor = "#102250";
 
 type Props = {};
 
-const inputs: Input[] = [
-  {
-    type: "text",
-    placeholder: "name",
-    value: "",
-    name: "name",
-    validation: {
-      pattern: "[a-zA-Z]+",
-      required: true,
-    },
-  },
-  {
-    type: "text",
-    placeholder: "email",
-    value: "",
-    name: "email",
-    validation: {
-      pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
-      required: true,
-    },
-  },
-  {
-    type: "password",
-    placeholder: "password",
-    value: "",
-    name: "password",
-    validation: {
-      pattern: "",
-      required: true,
-      minLength: 6,
-    },
-  },
-  {
-    type: "radio",
-    name: "gender",
-    options: ["MALE", "FEMALE"],
-    value: null,
-  },
-];
-
-const Signup: FC<Props> = (props) => {
-  const onSubmit = (input: any) => console.log(input);
+const Signup: FC<Props> = () => {
+  const [signUp, { loading }] = useMutation(SIGN_UP);
+  const onSubmit = (input: any) =>
+    Box(input)
+      .map(logIt)
+      .fold((input) => {
+        try {
+          signUp({
+            variables: {
+              input: {
+                ...input,
+                country: "as",
+                gender: "MALE",
+              },
+            },
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      });
 
   return (
     <div
@@ -76,7 +69,7 @@ const Signup: FC<Props> = (props) => {
         }}
       >
         <Title text="Create a new account" />
-        <Form submit={onSubmit} inputs={inputs} />
+        <Form submit={onSubmit} inputs={signUpInputs} loading={loading} />
       </div>
     </div>
   );
