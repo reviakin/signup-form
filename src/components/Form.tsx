@@ -6,6 +6,7 @@ import { useForm } from "../tools";
 import { Input } from "../tools/hooks/types";
 import { Box } from "../tools";
 import { Loader } from "./Loader";
+import { Button } from "./Button";
 
 type Props = {
   submit: (a: any) => void;
@@ -67,12 +68,7 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
         {loading ? (
           <Loader />
         ) : (
-          <button
-            type="submit"
-            // disabled={!state.isValid}
-          >
-            Sign up
-          </button>
+          <Button label="Sign up" disabled={!state.isValid} />
         )}
       </div>
     </form>
