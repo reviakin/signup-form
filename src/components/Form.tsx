@@ -5,13 +5,15 @@ import { RadioInput } from "./RadioInput";
 import { useForm } from "../tools";
 import { Input } from "../tools/hooks/types";
 import { Box } from "../tools";
+import { Loader } from "./Loader";
 
 type Props = {
   submit: (a: any) => void;
   inputs: Input[];
+  loading: boolean;
 };
 
-const Form: FC<Props> = ({ submit, inputs }) => {
+const Form: FC<Props> = ({ submit, inputs, loading }) => {
   const [state, { change }] = useForm(inputs);
 
   const setNameValue = ({ name, value }: { name: string; value: any }) => ({
@@ -62,12 +64,16 @@ const Form: FC<Props> = ({ submit, inputs }) => {
         <label htmlFor="">accept terms and conditions</label>
       </div>
       <div>
-        <button
-          type="submit"
-          // disabled={!state.isValid}
-        >
-          Sign up
-        </button>
+        {loading ? (
+          <Loader />
+        ) : (
+          <button
+            type="submit"
+            // disabled={!state.isValid}
+          >
+            Sign up
+          </button>
+        )}
       </div>
     </form>
   );
