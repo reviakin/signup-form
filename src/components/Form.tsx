@@ -1,27 +1,29 @@
 import React, { FC } from "react";
 import { TextInput } from "./TextInput";
-import { compose, map, merge, assign, reduce } from "lodash/fp";
+import { compose, map, merge, reduce } from "lodash/fp";
 import { RadioInput } from "./RadioInput";
 import { useForm } from "../tools";
 import { Input } from "../tools/hooks/types";
 import { Box } from "../tools";
 
 type Props = {
-  submit: (state: any) => void;
-  // submit: (state: { [name: string]: any }) => void;
+  submit: (a: any) => void;
   inputs: Input[];
 };
 
 const Form: FC<Props> = ({ submit, inputs }) => {
   const [state, { change }] = useForm(inputs);
 
+  const setNameValue = ({ name, value }: { name: string; value: any }) => ({
+    [name]: value,
+  });
+
+  const prepare = (input: Input[]) =>
+    compose(reduce(merge, {}), map(setNameValue))(input);
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) =>
     compose(
-      () =>
-        Box(state.inputs)
-          .map(map(({ name, value }) => ({ [name]: value })))
-          .map(reduce((acc, input) => ({ ...acc, ...input }), {}))
-          .fold(submit),
+      () => Box(state.inputs).map(prepare).fold(submit),
       (event: React.FormEvent<HTMLFormElement>) => event.preventDefault()
     )(event);
 
