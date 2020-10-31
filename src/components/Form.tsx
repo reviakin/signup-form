@@ -49,7 +49,7 @@ const Form: FC<Props> = (props) => {
                 onChange={change}
               />
             ),
-          state
+          state.inputs
         )}
         <div>
           <select name="" id="">

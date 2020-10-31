@@ -29,4 +29,6 @@ type UpdateValueAction = {
 
 export type Actions = UpdateValueAction;
 
-export type State = Input[];
+export type State = {
+  inputs: Input[];
+};
