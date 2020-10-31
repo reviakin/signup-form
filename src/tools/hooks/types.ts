@@ -30,5 +30,6 @@ type UpdateValueAction = {
 export type Actions = UpdateValueAction;
 
 export type State = {
+  isValid: boolean;
   inputs: Input[];
 };
