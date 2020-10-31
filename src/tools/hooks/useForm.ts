@@ -5,6 +5,7 @@ import { map, find } from "lodash/fp";
 import { State, Actions } from "./types";
 
 const initState: State = {
+  isValid: false,
   inputs: [
     {
       type: "text",
@@ -17,7 +18,7 @@ const initState: State = {
       },
     },
     {
-      type: "email",
+      type: "text",
       placeholder: "email",
       value: "",
       name: "email",
