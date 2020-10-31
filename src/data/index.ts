@@ -1,0 +1,1 @@
+export { signUpInputs } from "./signUpInputs";
