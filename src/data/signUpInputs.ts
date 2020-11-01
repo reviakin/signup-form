@@ -1,4 +1,5 @@
 import { Input } from "../tools/hooks/types";
+import { countryList } from "./countryList";
 
 const signUpInputs: Input[] = [
   {
@@ -36,6 +37,12 @@ const signUpInputs: Input[] = [
     type: "radio",
     name: "gender",
     options: ["MALE", "FEMALE"],
+    value: null,
+  },
+  {
+    type: "select",
+    name: "country",
+    options: countryList,
     value: null,
   },
 ];
