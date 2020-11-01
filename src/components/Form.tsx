@@ -43,7 +43,7 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
         ) : (
           <Button
             label="Signup"
-            disabled={!state.isValid}
+            disabled={!state.valid}
             width={343}
             height={62}
             type="rounded"
