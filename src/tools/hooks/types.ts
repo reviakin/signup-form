@@ -41,9 +41,24 @@ type UpdateValueAction = {
   };
 };
 
+type UpdateInputAction = {
+  type: "UPDATE_INPUT";
+  payload: {
+    name: string;
+    value: string;
+  };
+};
+
 export type Actions = UpdateValueAction;
 
-export type State = {
-  isValid: boolean;
-  inputs: Input[];
+export type FormInput = Input & {
+  valid: boolean;
+  touched: boolean;
 };
+
+export type State = FormInput[];
+
+export type UseFromReturn = [
+  { inputs: State; valid: boolean },
+  { change: (event: React.ChangeEvent<HTMLInputElement>) => void }
+];
