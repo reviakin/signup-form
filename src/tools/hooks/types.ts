@@ -17,7 +17,21 @@ interface IRadioInput {
   value: null | string;
 }
 
-export type Input = IRadioInput | ITextInput;
+interface ISelectInput {
+  readonly name: string;
+  readonly options: string[];
+  readonly type: "select";
+  value: null | string;
+}
+
+interface ICheckboxInput {
+  readonly name: string;
+  readonly options: string[];
+  readonly type: "checkbox";
+  value: null | string;
+}
+
+export type Input = IRadioInput | ITextInput | ISelectInput;
 
 type UpdateValueAction = {
   type: "UPDATE_VALUE";
