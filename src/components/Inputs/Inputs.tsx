@@ -6,23 +6,26 @@ import { Input } from "../../tools/hooks/types";
 
 type Props = {
   inputs: Input[];
-  change: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  change: (input: { name: string; value: string }) => void;
 };
 
 const Inputs: FC<Props> = ({ inputs, change }) => (
   <>
-    {inputs.map((input) =>
+    {inputs.map(({ name, ...input }) =>
       input.type === "radio" ? (
         <RadioInput
-          key={input.name}
-          name={input.name}
+          key={name}
+          name={name}
           options={input.options}
           value={input.value}
-          onChange={change}
+          onChange={({ target: { value } }) => change({ value, name })}
         />
       ) : input.type === "select" ? (
-        <div key={input.name}>
-          <select name={input.name}>
+        <div key={name}>
+          <select
+            name={name}
+            onChange={({ target: { value } }) => change({ value, name: name })}
+          >
             <option value=""></option>
             {input.options.map((value) => (
               <option value={value} key={value}>
@@ -32,12 +35,12 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           </select>
         </div>
       ) : (
-        <div key={input.name}>
+        <div key={name}>
           <TextInput
             type={input.type}
             placeholder={input.placeholder}
-            changeHandler={change}
-            name={input.name}
+            changeHandler={({ target: { value } }) => change({ value, name })}
+            name={name}
             value={input.value}
           />
         </div>
