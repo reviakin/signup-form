@@ -10,6 +10,7 @@ import {
   RadioInputValidation,
   SelectInputValidation,
   TextInputValidation,
+  ISelectInput,
 } from "./types";
 
 const isTextValidation = (validation: any): validation is TextInputValidation =>
@@ -54,20 +55,29 @@ const checkInputValid = ({
     ? !!value
     : true;
 
+const isSelectInputType = (input: any): input is ISelectInput =>
+  input.type &&
+  typeof input.type === "string" &&
+  ["radio", "select", "checkbox"].includes(input.type);
+
 const reducer = (state: State, action: Actions): State => {
-  if (action.type === "UPDATE_VALUE") {
-    const { name, value } = action.payload;
-    return state.map((input) =>
-      input.name === name ? { ...input, value } : input
-    );
-  }
   if (action.type === "UPDATE_INPUT") {
     const { name, value } = action.payload;
 
-    console.log({ name, value });
-
     return state.map((input) =>
-      input.name === name
+      input.name === name && isSelectInputType(input)
+        ? {
+            ...input,
+            value: value === input.value ? null : value,
+            touched: true,
+            valid: input.validation
+              ? checkInputValid({
+                  validation: input.validation,
+                  value: value === input.value ? null : value,
+                })
+              : true,
+          }
+        : input.name === name
         ? {
             ...input,
             value,
