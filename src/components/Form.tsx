@@ -16,7 +16,6 @@ type Props = {
 
 const Form: FC<Props> = ({ submit, inputs, loading }) => {
   const [state, { change }] = useForm(inputs);
-  const [isAccepted, setAccepted] = useState(false);
 
   const setNameValue = ({ name, value }: { name: string; value: any }) => ({
     [name]: value,
@@ -35,20 +34,12 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
     <form onSubmit={onSubmit}>
       <Inputs inputs={state.inputs} change={change} />
       <div>
-        <input
-          type="checkbox"
-          checked={isAccepted}
-          onChange={() => setAccepted(!isAccepted)}
-        />
-        <label htmlFor="">accept terms and conditions</label>
-      </div>
-      <div>
         {loading ? (
           <Loader />
         ) : (
           <Button
             label="Signup"
-            disabled={!state.valid || !isAccepted}
+            disabled={!state.valid}
             width={343}
             height={62}
             type="rounded"
