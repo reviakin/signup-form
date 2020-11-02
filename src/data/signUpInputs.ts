@@ -23,7 +23,7 @@ const signUpInputs: Input[] = [
       pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
       required: true,
       minLength: null,
-      invalidMessage: "Password must contain at last 6 symbols",
+      invalidMessage: "Please enter a valid email adress",
     },
   },
   {
@@ -35,7 +35,7 @@ const signUpInputs: Input[] = [
       pattern: null,
       required: true,
       minLength: 6,
-      invalidMessage: "Password must contain at last 6 symbols",
+      invalidMessage: "Password must contain at least 6 symbols",
     },
   },
   {
@@ -56,6 +56,16 @@ const signUpInputs: Input[] = [
     validation: {
       required: true,
       invalidMessage: "You must select your country",
+    },
+  },
+  {
+    type: "checkbox",
+    name: "terms&condition",
+    options: ["Accept terms and conditions"],
+    value: null,
+    validation: {
+      required: true,
+      invalidMessage: "You must accept the policies",
     },
   },
 ];
