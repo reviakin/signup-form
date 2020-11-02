@@ -1,12 +1,22 @@
+export type TextInputValidation = {
+  readonly pattern: string | null;
+  readonly required: boolean;
+  readonly minLength: number | null;
+};
+
+export type RadioInputValidation = {
+  readonly required: boolean;
+};
+
+export type SelectInputValidation = {
+  readonly required: boolean;
+};
+
 interface ITextInput {
   readonly type: "text" | "password" | "email";
   readonly placeholder: string;
   readonly name: string;
-  readonly validation: {
-    readonly pattern: string;
-    readonly required: boolean;
-    readonly minLength?: number;
-  };
+  readonly validation?: TextInputValidation;
   value: string;
 }
 
@@ -14,6 +24,7 @@ interface IRadioInput {
   readonly name: string;
   readonly options: string[];
   readonly type: "radio";
+  readonly validation: RadioInputValidation;
   value: null | string;
 }
 
@@ -21,6 +32,7 @@ interface ISelectInput {
   readonly name: string;
   readonly options: string[];
   readonly type: "select";
+  readonly validation: SelectInputValidation;
   value: null | string;
 }
 
@@ -49,7 +61,7 @@ type UpdateInputAction = {
   };
 };
 
-export type Actions = UpdateValueAction;
+export type Actions = UpdateValueAction | UpdateInputAction;
 
 export type FormInput = Input & {
   valid: boolean;
@@ -60,5 +72,5 @@ export type State = FormInput[];
 
 export type UseFromReturn = [
   { inputs: State; valid: boolean },
-  { change: (event: React.ChangeEvent<HTMLInputElement>) => void }
+  { change: (input: { name: string; value: string }) => void }
 ];
