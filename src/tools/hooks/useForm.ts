@@ -82,12 +82,11 @@ const reducer = (state: State, action: Actions): State => {
   return state;
 };
 
-const formInputProp = {
-  valid: false,
-  touched: false,
-};
-
-const addFormProp = (input: Input): FormInput => merge(input, formInputProp);
+const addFormProp = (input: Input): FormInput =>
+  merge(input, {
+    valid: input.validation ? false : true,
+    touched: false,
+  });
 
 const isInputValid = ({ valid }: FormInput): boolean => valid;
 
