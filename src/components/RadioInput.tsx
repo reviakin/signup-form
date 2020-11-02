@@ -4,7 +4,7 @@ import { map } from "lodash/fp";
 type Props = {
   name: string;
   options: string[];
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (input: { name: string; value: string }) => void;
   value: null | string;
 };
 
@@ -14,10 +14,10 @@ const RadioInput: FC<Props> = ({ name, options, onChange, value }) => (
       (option) => (
         <div key={option}>
           <input
+            onClick={() => onChange({ name, value: option })}
             type="radio"
             name={name}
             value={option}
-            onChange={onChange}
             checked={option === value}
           />
           <label>{option}</label>
