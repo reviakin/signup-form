@@ -10,6 +10,7 @@ const signUpInputs: Input[] = [
     validation: {
       pattern: "[a-zA-Z]+",
       required: true,
+      minLength: null,
     },
   },
   {
@@ -20,6 +21,7 @@ const signUpInputs: Input[] = [
     validation: {
       pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
       required: true,
+      minLength: null,
     },
   },
   {
@@ -28,7 +30,7 @@ const signUpInputs: Input[] = [
     value: "",
     name: "password",
     validation: {
-      pattern: "",
+      pattern: null,
       required: true,
       minLength: 6,
     },
