@@ -82,7 +82,7 @@ const reducer = (state: State, action: Actions): State => {
   return state;
 };
 
-const addFormProp = (input: Input): FormInput =>
+const addFormProps = (input: Input): FormInput =>
   merge(input, {
     valid: input.validation ? false : true,
     touched: false,
@@ -91,7 +91,7 @@ const addFormProp = (input: Input): FormInput =>
 const isInputValid = ({ valid }: FormInput): boolean => valid;
 
 function useForm(inputs: Input[]): UseFromReturn {
-  const [state, dispatch] = useReducer(reducer, inputs.map(addFormProp));
+  const [state, dispatch] = useReducer(reducer, inputs.map(addFormProps));
 
   const onInputChangeHandler = useCallback(
     ({ name, value }: { name: string; value: string }) =>
