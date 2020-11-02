@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { compose, map, merge, reduce } from "lodash/fp";
 
 import { Loader } from "./Loader";
@@ -16,6 +16,7 @@ type Props = {
 
 const Form: FC<Props> = ({ submit, inputs, loading }) => {
   const [state, { change }] = useForm(inputs);
+  const [isAccepted, setAccepted] = useState(false);
 
   const setNameValue = ({ name, value }: { name: string; value: any }) => ({
     [name]: value,
@@ -34,7 +35,11 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
     <form onSubmit={onSubmit}>
       <Inputs inputs={state.inputs} change={change} />
       <div>
-        <input type="checkbox" name="" id="" />
+        <input
+          type="checkbox"
+          checked={isAccepted}
+          onChange={() => setAccepted(!isAccepted)}
+        />
         <label htmlFor="">accept terms and conditions</label>
       </div>
       <div>
@@ -43,7 +48,7 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
         ) : (
           <Button
             label="Signup"
-            disabled={!state.valid}
+            disabled={!state.valid || !isAccepted}
             width={343}
             height={62}
             type="rounded"
