@@ -15,7 +15,7 @@ export type SelectInputValidation = {
   readonly invalidMessage: string;
 };
 
-interface ITextInput {
+export interface ITextInput {
   readonly type: "text" | "password" | "email";
   readonly placeholder: string;
   readonly name: string;
@@ -23,30 +23,15 @@ interface ITextInput {
   value: string;
 }
 
-interface IRadioInput {
+export interface ISelectInput {
   readonly name: string;
   readonly options: string[];
-  readonly type: "radio";
+  readonly type: "radio" | "select" | "checkbox";
   readonly validation?: RadioInputValidation;
   value: null | string;
 }
 
-interface ISelectInput {
-  readonly name: string;
-  readonly options: string[];
-  readonly type: "select";
-  readonly validation?: SelectInputValidation;
-  value: null | string;
-}
-
-interface ICheckboxInput {
-  readonly name: string;
-  readonly options: string[];
-  readonly type: "checkbox";
-  value: null | string;
-}
-
-export type Input = IRadioInput | ITextInput | ISelectInput;
+export type Input = ISelectInput | ITextInput;
 
 type UpdateValueAction = {
   type: "UPDATE_VALUE";
