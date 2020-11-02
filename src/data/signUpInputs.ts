@@ -38,12 +38,14 @@ const signUpInputs: Input[] = [
     name: "gender",
     options: ["MALE", "FEMALE"],
     value: null,
+    validation: { required: true },
   },
   {
     type: "select",
     name: "country",
     options: countryList,
     value: null,
+    validation: { required: true },
   },
 ];
 
