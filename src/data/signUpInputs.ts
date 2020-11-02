@@ -11,6 +11,7 @@ const signUpInputs: Input[] = [
       pattern: "[a-zA-Z]+",
       required: true,
       minLength: null,
+      invalidMessage: "Please enter a valid name",
     },
   },
   {
@@ -22,6 +23,7 @@ const signUpInputs: Input[] = [
       pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
       required: true,
       minLength: null,
+      invalidMessage: "Password must contain at last 6 symbols",
     },
   },
   {
@@ -33,6 +35,7 @@ const signUpInputs: Input[] = [
       pattern: null,
       required: true,
       minLength: 6,
+      invalidMessage: "Password must contain at last 6 symbols",
     },
   },
   {
@@ -40,14 +43,20 @@ const signUpInputs: Input[] = [
     name: "gender",
     options: ["MALE", "FEMALE"],
     value: null,
-    validation: { required: true },
+    validation: {
+      required: true,
+      invalidMessage: "You must select the gender",
+    },
   },
   {
     type: "select",
     name: "country",
     options: countryList,
     value: null,
-    validation: { required: true },
+    validation: {
+      required: true,
+      invalidMessage: "You must select your country",
+    },
   },
 ];
 
