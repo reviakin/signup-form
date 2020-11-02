@@ -2,24 +2,28 @@ import React, { FC } from "react";
 
 import { RadioInput } from "../RadioInput";
 import { TextInput } from "../TextInput";
-import { FormInput } from "../../tools/hooks/types";
+import { FormInput, ITextInput } from "../../tools/hooks/types";
 
 type Props = {
   inputs: FormInput[];
   change: (input: { name: string; value: string }) => void;
 };
 
+const isTextInputType = (input: any): input is ITextInput =>
+  input.type &&
+  typeof input.type === "string" &&
+  ["text", "email", "password"].includes(input.type);
+
 const Inputs: FC<Props> = ({ inputs, change }) => (
   <>
     {inputs.map(({ name, ...input }) =>
       input.type === "radio" ? (
-        <div>
+        <div key={name}>
           <RadioInput
-            key={name}
             name={name}
             options={input.options}
             value={input.value}
-            onChange={({ target: { value } }) => change({ value, name })}
+            onChange={change}
           />
           {input.validation && input.touched && !input.valid ? (
             <p>{input.validation.invalidMessage}</p>
@@ -42,7 +46,24 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             <p>{input.validation.invalidMessage}</p>
           ) : null}
         </div>
-      ) : (
+      ) : input.type === "checkbox" ? (
+        <div key={name}>
+          {input.options.map((option) => (
+            <>
+              <input
+                key={option}
+                type="checkbox"
+                checked={option === input.value}
+                onChange={() => change({ name, value: option })}
+              />
+              <label htmlFor="">accept terms and conditions</label>
+            </>
+          ))}
+          {input.validation && input.touched && !input.valid ? (
+            <p>{input.validation.invalidMessage}</p>
+          ) : null}
+        </div>
+      ) : isTextInputType(input) ? (
         <div key={name}>
           <TextInput
             type={input.type}
@@ -55,7 +76,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             <p>{input.validation.invalidMessage}</p>
           ) : null}
         </div>
-      )
+      ) : null
     )}
   </>
 );
