@@ -2,14 +2,17 @@ export type TextInputValidation = {
   readonly pattern: string | null;
   readonly required: boolean;
   readonly minLength: number | null;
+  readonly invalidMessage: string;
 };
 
 export type RadioInputValidation = {
   readonly required: boolean;
+  readonly invalidMessage: string;
 };
 
 export type SelectInputValidation = {
   readonly required: boolean;
+  readonly invalidMessage: string;
 };
 
 interface ITextInput {
@@ -24,7 +27,7 @@ interface IRadioInput {
   readonly name: string;
   readonly options: string[];
   readonly type: "radio";
-  readonly validation: RadioInputValidation;
+  readonly validation?: RadioInputValidation;
   value: null | string;
 }
 
@@ -32,7 +35,7 @@ interface ISelectInput {
   readonly name: string;
   readonly options: string[];
   readonly type: "select";
-  readonly validation: SelectInputValidation;
+  readonly validation?: SelectInputValidation;
   value: null | string;
 }
 
