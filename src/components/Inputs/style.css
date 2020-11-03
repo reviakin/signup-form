@@ -1,5 +1,6 @@
 .option-input {
   appearance: none;
+  cursor: pointer;
   width: 14px;
   height: 14px;
   border: 1px solid #0094ff;
@@ -28,8 +29,11 @@
   border-radius: 50%;
   position: absolute;
   /* TODO: find out better symbol */
-  content: "\2714";
+  /* content: "\2714"; */
+  content: "∨";
   color: #0094ff;
   display: inline-block;
-  left: 1px;
+  left: 2px;
+  font-weight: bold;
+  top: -2px;
 }
