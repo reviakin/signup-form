@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-type Props = {
+export type SelectInputProps = {
   name: string;
   change: (input: { name: string; value: string }) => void;
   value: string | null;
@@ -8,7 +8,7 @@ type Props = {
   placeholder?: string;
 };
 
-const SelectInput: FC<Props> = ({
+const SelectInput: FC<SelectInputProps> = ({
   name,
   change,
   value,
