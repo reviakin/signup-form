@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 
 import { RadioInput, SelectInput, TextInput } from "./Elements";
-import { FormInput, ITextInput } from "../../tools/hooks/types";
 import { Title } from "../Title";
+
+import { FormInput, ITextInput } from "../../tools/hooks/types";
+
 import "./style.css";
 
 type Props = {
