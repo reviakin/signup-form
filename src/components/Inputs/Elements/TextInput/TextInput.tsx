@@ -26,9 +26,6 @@ const TextInput: FC<Props> = ({
   <input
     style={{
       ...style,
-      background: "#F5F8FA",
-      borderRadius: "8px",
-      border: "none",
     }}
     className="text-input"
     type={type}

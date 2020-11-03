@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 
-import { RadioInput } from "../RadioInput/RadioInput";
-import { TextInput } from "../TextInput";
+import { RadioInput, SelectInput, TextInput } from "./Elements";
 import { FormInput, ITextInput } from "../../tools/hooks/types";
 import { Title } from "../Title";
 import "./style.css";
@@ -53,31 +52,13 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             position: "relative",
           }}
         >
-          <select
-            className="select-input"
-            style={{
-              width: "100%",
-              height: "50px",
-              background: "#F5F8FA",
-              borderRadius: "8px",
-              border: "none",
-              padding: "0 18px",
-              boxSizing: "border-box",
-              color: input.value ? "#222222" : "#A2A2A2",
-              fontSize: "14px",
-            }}
+          <SelectInput
             name={name}
-            onChange={({ target: { value } }) => change({ value, name: name })}
-          >
-            <option value="" selected>
-              {input.placeholder}
-            </option>
-            {input.options.map((value) => (
-              <option value={value} key={value} style={{ color: "#222222" }}>
-                {value}
-              </option>
-            ))}
-          </select>
+            change={change}
+            value={input.value}
+            options={input.options}
+            placeholder={input.placeholder}
+          />
           {input.validation && input.touched && !input.valid ? (
             <Title
               classname="input--invalid-message"
@@ -123,17 +104,11 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             name={name}
             value={input.value}
             style={{
-              height: "50px",
-              width: "100%",
-              padding: "0 18px",
-              boxSizing: "border-box",
               color:
                 (input.validation && input.touched && !input.valid) ||
-                !input.value ||
-                !input.touched
+                !input.value
                   ? "#A2A2A2"
                   : "#222222",
-              fontSize: "14px",
             }}
           />
           {input.validation && input.touched && !input.valid ? (

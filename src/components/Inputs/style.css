@@ -50,7 +50,12 @@
 .text-input {
   background: #f5f8fa;
   border-radius: 8px;
-  border: "none";
+  border: none;
+  height: 50px;
+  width: 100%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 .text-input:focus {
@@ -67,4 +72,19 @@
   bottom: -17px;
   font-size: 10px;
   left: 18px;
+}
+
+.select-input {
+  width: 100%;
+  height: 50px;
+  background: #f5f8fa;
+  border-radius: 8px;
+  border: none;
+  padding: 0 18px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.select-input:focus {
+  outline: none;
 }
