@@ -8,8 +8,8 @@
 }
 
 .signup__form-wrapper {
-  width: 400;
-  height: 605;
+  width: 400px;
+  height: 605px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
