@@ -15,7 +15,7 @@ const signUpInputs: Input[] = [
     },
   },
   {
-    type: "text",
+    type: "email",
     placeholder: "email",
     value: "",
     name: "email",
