@@ -5,11 +5,6 @@ export type TextInputValidation = {
   readonly invalidMessage: string;
 };
 
-export type RadioInputValidation = {
-  readonly required: boolean;
-  readonly invalidMessage: string;
-};
-
 export type SelectInputValidation = {
   readonly required: boolean;
   readonly invalidMessage: string;
@@ -27,7 +22,8 @@ export interface ISelectInput {
   readonly name: string;
   readonly options: string[];
   readonly type: "radio" | "select" | "checkbox";
-  readonly validation?: RadioInputValidation;
+  readonly validation?: SelectInputValidation;
+  readonly placeholder?: string;
   value: null | string;
 }
 

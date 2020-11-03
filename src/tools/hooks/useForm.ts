@@ -7,7 +7,6 @@ import {
   Input,
   FormInput,
   UseFromReturn,
-  RadioInputValidation,
   SelectInputValidation,
   TextInputValidation,
   ISelectInput,
@@ -43,10 +42,7 @@ const checkInputValid = ({
   validation,
   value,
 }: {
-  validation:
-    | RadioInputValidation
-    | SelectInputValidation
-    | TextInputValidation;
+  validation: SelectInputValidation | TextInputValidation;
   value: any;
 }) =>
   isTextValidation(validation)
