@@ -23,6 +23,7 @@ const RadioInput: FC<Props> = ({
           <input
             className={classname}
             onClick={() => onChange({ name, value: option })}
+            onChange={() => {}}
             type="radio"
             name={name}
             value={option}
