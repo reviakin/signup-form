@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 
 type Props = {
   type: "text" | "password" | "email";
@@ -9,6 +9,7 @@ type Props = {
   required?: boolean;
   minLength?: number;
   pattern?: string;
+  style?: CSSProperties;
 };
 
 const TextInput: FC<Props> = ({
@@ -20,8 +21,15 @@ const TextInput: FC<Props> = ({
   required,
   minLength,
   pattern,
+  style,
 }) => (
   <input
+    style={{
+      ...style,
+      background: "#F5F8FA",
+      borderRadius: "8px",
+      border: "none",
+    }}
     type={type}
     placeholder={placeholder}
     value={value}
