@@ -39,16 +39,6 @@ const signUpInputs: Input[] = [
     },
   },
   {
-    type: "radio",
-    name: "gender",
-    options: ["MALE", "FEMALE"],
-    value: null,
-    validation: {
-      required: true,
-      invalidMessage: "You must select the gender",
-    },
-  },
-  {
     type: "select",
     name: "country",
     options: countryList,
@@ -56,6 +46,16 @@ const signUpInputs: Input[] = [
     validation: {
       required: true,
       invalidMessage: "You must select your country",
+    },
+  },
+  {
+    type: "radio",
+    name: "gender",
+    options: ["MALE", "FEMALE"],
+    value: null,
+    validation: {
+      required: true,
+      invalidMessage: "You must select the gender",
     },
   },
   {
