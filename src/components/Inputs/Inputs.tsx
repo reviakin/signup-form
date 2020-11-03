@@ -38,12 +38,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           />
           {input.validation && input.touched && !input.valid ? (
             <Title
-              style={{
-                color: "red",
-                position: "absolute",
-                bottom: "-19px",
-                fontSize: "12px",
-              }}
+              classname="input--invalid-message"
               text={input.validation.invalidMessage}
             />
           ) : null}
@@ -74,7 +69,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             name={name}
             onChange={({ target: { value } }) => change({ value, name: name })}
           >
-            <option value="" selected disabled>
+            <option value="" selected>
               {input.placeholder}
             </option>
             {input.options.map((value) => (
@@ -85,12 +80,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           </select>
           {input.validation && input.touched && !input.valid ? (
             <Title
-              style={{
-                color: "red",
-                position: "absolute",
-                bottom: "-19px",
-                fontSize: "12px",
-              }}
+              classname="input--invalid-message"
               text={input.validation.invalidMessage}
             />
           ) : null}
@@ -119,12 +109,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           ))}
           {input.validation && input.touched && !input.valid ? (
             <Title
-              style={{
-                color: "red",
-                position: "absolute",
-                bottom: "-19px",
-                fontSize: "12px",
-              }}
+              classname="input--invalid-message"
               text={input.validation.invalidMessage}
             />
           ) : null}
@@ -153,12 +138,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           />
           {input.validation && input.touched && !input.valid ? (
             <Title
-              style={{
-                color: "red",
-                position: "absolute",
-                bottom: "-19px",
-                fontSize: "12px",
-              }}
+              classname="input--invalid-message"
               text={input.validation.invalidMessage}
             />
           ) : null}
