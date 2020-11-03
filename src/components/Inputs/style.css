@@ -1,0 +1,34 @@
+.option-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #0094ff;
+  position: relative;
+}
+
+.option-input--radio {
+  border-radius: 50%;
+}
+
+.option-input--radio:checked::before {
+  height: 8px;
+  width: 8px;
+  background: #0094ff;
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: 2px;
+  left: 2px;
+}
+
+.option-input--checkbox:checked::before {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  position: absolute;
+  content: "\2714";
+  color: #0094ff;
+  display: inline-block;
+  left: 1px;
+}
