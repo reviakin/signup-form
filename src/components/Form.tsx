@@ -44,20 +44,28 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
       }}
     >
       <Inputs inputs={state.inputs} change={change} />
-      {loading ? (
-        <Loader />
-      ) : (
-        <Button
-          label="Signup"
-          disabled={!state.valid}
-          style={{
-            width: "85%",
-            height: "62px",
-            marginTop: "20px",
-          }}
-          type="rounded"
-        />
-      )}
+      <div
+        style={{
+          position: "relative",
+          width: "85%",
+          height: 62,
+          marginTop: 20,
+        }}
+      >
+        {loading ? (
+          <Loader />
+        ) : (
+          <Button
+            label="Signup"
+            disabled={!state.valid}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            type="rounded"
+          />
+        )}
+      </div>
     </form>
   );
 };
