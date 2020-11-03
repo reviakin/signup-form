@@ -51,3 +51,11 @@
 .text-input::placeholder {
   color: #a2a2a2;
 }
+
+.input--invalid-message {
+  color: red;
+  position: absolute;
+  bottom: -17px;
+  font-size: 10px;
+  left: 18px;
+}
