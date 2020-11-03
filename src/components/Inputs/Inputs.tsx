@@ -68,13 +68,17 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
               border: "none",
               padding: "0 18px",
               boxSizing: "border-box",
+              color: input.value ? "#222222" : "#A2A2A2",
+              fontSize: "14px",
             }}
             name={name}
             onChange={({ target: { value } }) => change({ value, name: name })}
           >
-            <option value=""></option>
+            <option value="" selected disabled>
+              {input.placeholder}
+            </option>
             {input.options.map((value) => (
-              <option value={value} key={value}>
+              <option value={value} key={value} style={{ color: "#222222" }}>
                 {value}
               </option>
             ))}
@@ -138,6 +142,13 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
               width: "100%",
               padding: "0 18px",
               boxSizing: "border-box",
+              color:
+                (input.validation && input.touched && !input.valid) ||
+                !input.value ||
+                !input.touched
+                  ? "#A2A2A2"
+                  : "#222222",
+              fontSize: "14px",
             }}
           />
           {input.validation && input.touched && !input.valid ? (
