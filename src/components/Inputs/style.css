@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 .option-input {
   appearance: none;
   cursor: pointer;
