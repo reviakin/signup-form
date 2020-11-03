@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, Fragment } from "react";
 import { map } from "lodash/fp";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const RadioInput: FC<Props> = ({ name, options, onChange, value }) => (
-  <div>
+  <>
     {map(
       (option) => (
         <div key={option}>
@@ -20,12 +20,14 @@ const RadioInput: FC<Props> = ({ name, options, onChange, value }) => (
             value={option}
             checked={option === value}
           />
-          <label>{option}</label>
+          <label>
+            {option.charAt(0).toUpperCase() + option.slice(1).toLowerCase()}
+          </label>
         </div>
       ),
       options
     )}
-  </div>
+  </>
 );
 
 export { RadioInput };
