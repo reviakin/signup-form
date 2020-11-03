@@ -8,6 +8,10 @@
   margin: 0 8px;
 }
 
+.option-input:focus {
+  outline: none;
+}
+
 .option-input--radio {
   border-radius: 50%;
 }
@@ -36,4 +40,14 @@
   left: 2px;
   font-weight: bold;
   top: -2px;
+}
+
+.text-input {
+  background: #f5f8fa;
+  border-radius: 8px;
+  border: "none";
+}
+
+.text-input::placeholder {
+  color: #a2a2a2;
 }
