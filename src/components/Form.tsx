@@ -31,21 +31,33 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
     )(event);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      onSubmit={onSubmit}
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "53px",
+      }}
+    >
       <Inputs inputs={state.inputs} change={change} />
-      <div>
-        {loading ? (
-          <Loader />
-        ) : (
-          <Button
-            label="Signup"
-            disabled={!state.valid}
-            width={343}
-            height={62}
-            type="rounded"
-          />
-        )}
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Button
+          label="Signup"
+          disabled={!state.valid}
+          style={{
+            width: "85%",
+            height: "62px",
+            marginTop: "20px",
+          }}
+          type="rounded"
+        />
+      )}
     </form>
   );
 };
