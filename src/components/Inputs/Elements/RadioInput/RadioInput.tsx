@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { map } from "lodash/fp";
 
-type Props = {
+export type RadioInputProps = {
   name: string;
   options: string[];
   onChange: (input: { name: string; value: string }) => void;
@@ -9,7 +9,7 @@ type Props = {
   classname?: string;
 };
 
-const RadioInput: FC<Props> = ({
+const RadioInput: FC<RadioInputProps> = ({
   name,
   options,
   onChange,
