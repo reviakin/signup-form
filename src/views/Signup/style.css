@@ -1,0 +1,25 @@
+.signup__wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup__form-wrapper {
+  width: 400;
+  height: 605;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.signup__title {
+  font-family: SANS-SERIF;
+  font-size: 28px;
+  font-weight: bold;
+  user-select: none;
+}

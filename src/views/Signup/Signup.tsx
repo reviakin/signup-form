@@ -1,11 +1,14 @@
 import React, { FC } from "react";
-import { Background } from "../components/Background";
-import { Form } from "../components/Form";
-import { Title } from "../components/Title";
-import { signUpInputs } from "../data";
 import { gql, useMutation } from "@apollo/client";
-import { Box } from "../tools";
 import { pick } from "lodash/fp";
+
+import { Background } from "../../components/Background";
+import { Form } from "../../components/Form";
+import { Title } from "../../components/Title";
+
+import { Box } from "../../tools";
+import { signUpInputs } from "../../data";
+import "./style.css";
 
 const SIGN_UP = gql`
   mutation Signup($input: SignupInput!) {
@@ -65,38 +68,11 @@ const Signup: FC<Props> = () => {
   }
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div className="signup__wrapper">
       <Background color={bgdColor} />
-      <div
-        style={{
-          width: 400,
-          height: 605,
-          background: "#ffffff",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          borderRadius: "8px",
-        }}
-      >
+      <div className="signup__form-wrapper">
         <div style={{ margin: "32px 56px" }}>
-          <Title
-            text="Create a new account"
-            style={{
-              fontFamily: "SANS-SERIF",
-              fontSize: "28px",
-              fontWeight: "bold",
-              userSelect: "none",
-            }}
-          />
+          <Title text="Create a new account" classname="signup__title" />
         </div>
         <Form submit={onSubmit} inputs={signUpInputs} loading={loading} />
       </div>
