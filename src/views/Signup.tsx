@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { Background } from "./Background";
-import { Form } from "./Form";
-import { Title } from "./Title";
+import { Background } from "../components/Background";
+import { Form } from "../components/Form";
+import { Title } from "../components/Title";
 import { signUpInputs } from "../data";
 import { gql, useMutation } from "@apollo/client";
 import { Box } from "../tools";
