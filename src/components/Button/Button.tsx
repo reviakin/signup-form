@@ -1,11 +1,10 @@
-import React, { FC, PropsWithChildren } from "react";
+import React, { CSSProperties, FC, PropsWithChildren } from "react";
 
 type Props = {
   disabled?: boolean;
   label: string;
   background?: string;
-  width: number;
-  height: number;
+  style?: CSSProperties;
   type?: "rounded";
 };
 
@@ -18,8 +17,7 @@ const Button: FC<ButtonProps> = ({
   label,
   children,
   background = "#0094FF",
-  width = 120,
-  height = 20,
+  style,
   type,
 }) => (
   <button
@@ -27,12 +25,11 @@ const Button: FC<ButtonProps> = ({
     disabled={disabled}
     style={{
       background: disabled ? disabledBGD : background,
-      width,
-      height,
       borderRadius: type === "rounded" ? "31px" : "",
       color: "#ffffff",
       border: "none",
       cursor: disabled ? "not-allowed" : "pointer",
+      ...style,
     }}
   >
     {label}
