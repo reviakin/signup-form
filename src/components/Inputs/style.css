@@ -27,6 +27,7 @@
   width: 8px;
   border-radius: 50%;
   position: absolute;
+  /* TODO: find out better symbol */
   content: "\2714";
   color: #0094ff;
   display: inline-block;
