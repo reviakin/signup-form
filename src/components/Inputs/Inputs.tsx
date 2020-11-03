@@ -59,6 +59,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
           }}
         >
           <select
+            className="select-input"
             style={{
               width: "100%",
               height: "50px",
@@ -66,7 +67,6 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
               borderRadius: "8px",
               border: "none",
             }}
-            key={name}
             name={name}
             onChange={({ target: { value } }) => change({ value, name: name })}
           >
@@ -131,7 +131,12 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             changeHandler={({ target: { value } }) => change({ value, name })}
             name={name}
             value={input.value}
-            style={{ height: "50px", width: "100%" }}
+            style={{
+              height: "50px",
+              width: "100%",
+              padding: "0 18px",
+              boxSizing: "border-box",
+            }}
           />
           {input.validation && input.touched && !input.valid ? (
             <Title
