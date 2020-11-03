@@ -1,9 +1,10 @@
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 
-import { RadioInput } from "../RadioInput";
+import { RadioInput } from "../RadioInput/RadioInput";
 import { TextInput } from "../TextInput";
 import { FormInput, ITextInput } from "../../tools/hooks/types";
 import { Title } from "../Title";
+import "./style.css";
 
 type Props = {
   inputs: FormInput[];
@@ -33,6 +34,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             options={input.options}
             value={input.value}
             onChange={change}
+            classname="option-input option-input--radio"
           />
           {input.validation && input.touched && !input.valid ? (
             <Title
@@ -102,6 +104,7 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
               <input
                 key={option}
                 type="checkbox"
+                className="option-input option-input--checkbox"
                 checked={option === input.value}
                 onChange={() => change({ name, value: option })}
               />
