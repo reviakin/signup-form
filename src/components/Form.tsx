@@ -56,11 +56,12 @@ const Form: FC<Props> = ({ submit, inputs, loading }) => {
           <Loader />
         ) : (
           <Button
-            label="Signup"
+            label="Sign up"
             disabled={!state.valid}
             style={{
               width: "100%",
               height: "100%",
+              fontSize: "18px",
             }}
             type="rounded"
           />
