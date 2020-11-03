@@ -5,6 +5,7 @@
   height: 14px;
   border: 1px solid #0094ff;
   position: relative;
+  margin: 0 8px;
 }
 
 .option-input--radio {
@@ -21,6 +22,7 @@
   display: inline-block;
   top: 2px;
   left: 2px;
+  bottom: -2px;
 }
 
 .option-input--checkbox:checked::before {
@@ -28,8 +30,6 @@
   width: 8px;
   border-radius: 50%;
   position: absolute;
-  /* TODO: find out better symbol */
-  /* content: "\2714"; */
   content: "∨";
   color: #0094ff;
   display: inline-block;
