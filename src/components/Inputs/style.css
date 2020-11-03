@@ -48,6 +48,10 @@
   border: "none";
 }
 
+.text-input:focus {
+  outline: none;
+}
+
 .text-input::placeholder {
   color: #a2a2a2;
 }
