@@ -4,7 +4,6 @@ import { Form } from "./Form";
 import { Title } from "./Title";
 import { signUpInputs } from "../data";
 import { gql, useMutation } from "@apollo/client";
-import { Box, Right, Left } from "../tools";
 
 const SIGN_UP = gql`
   mutation Signup($input: SignupInput!) {
@@ -44,25 +43,20 @@ const isValidSignupInput = (input: any): input is SignupInput =>
   typeof input.gender === "string" &&
   ["MALE", "FEMALE"].includes(input.gender);
 
-const checkInput = (input: any) =>
-  isValidSignupInput(input) ? Right(input) : Left(input);
-
 const Signup: FC<Props> = () => {
-  const [signupMutation, { loading }] = useMutation(SIGN_UP);
+  const [signupMutation, { loading, error }] = useMutation(SIGN_UP);
 
   const signup = (input: SignupInput) =>
-    signupMutation({ variables: { input } });
+    signupMutation({ variables: { input } }).catch(console.log);
 
   const onSubmit = (input: any) =>
-    Box(input).fold((input) =>
-      isValidSignupInput(input)
-        ? signup(input)
-        : console.log("invalid signup input")
-    );
-  // checkInput(input).fold(
-  //   (input) => console.log(`invalid input ${input}`),
-  //   signup
-  // )
+    isValidSignupInput(input)
+      ? signup(input)
+      : console.log("invalid signup input");
+
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <div
@@ -83,12 +77,20 @@ const Signup: FC<Props> = () => {
           background: "#ffffff",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
           borderRadius: "8px",
         }}
       >
-        <Title text="Create a new account" />
+        <div style={{ margin: "32px 65px" }}>
+          <Title
+            text="Create a new account"
+            style={{
+              fontFamily: "Roboto",
+              fontSize: "28px",
+              fontWeight: "bold",
+            }}
+          />
+        </div>
         <Form submit={onSubmit} inputs={signUpInputs} loading={loading} />
       </div>
     </div>
