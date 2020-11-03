@@ -94,6 +94,7 @@ const Signup: FC<Props> = () => {
               fontFamily: "Roboto",
               fontSize: "28px",
               fontWeight: "bold",
+              userSelect: "none",
             }}
           />
         </div>
