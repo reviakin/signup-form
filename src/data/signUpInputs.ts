@@ -4,7 +4,7 @@ import { countryList } from "./countryList";
 const signUpInputs: Input[] = [
   {
     type: "text",
-    placeholder: "name",
+    placeholder: "Enter your name",
     value: "",
     name: "name",
     validation: {
@@ -16,7 +16,7 @@ const signUpInputs: Input[] = [
   },
   {
     type: "email",
-    placeholder: "email",
+    placeholder: "Email",
     value: "",
     name: "email",
     validation: {
@@ -28,7 +28,7 @@ const signUpInputs: Input[] = [
   },
   {
     type: "password",
-    placeholder: "password",
+    placeholder: "Password",
     value: "",
     name: "password",
     validation: {
@@ -43,6 +43,7 @@ const signUpInputs: Input[] = [
     name: "country",
     options: countryList,
     value: null,
+    placeholder: "Select country",
     validation: {
       required: true,
       invalidMessage: "You must select your country",
