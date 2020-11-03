@@ -30,6 +30,7 @@ const TextInput: FC<Props> = ({
       borderRadius: "8px",
       border: "none",
     }}
+    className="text-input"
     type={type}
     placeholder={placeholder}
     value={value}
