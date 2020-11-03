@@ -66,6 +66,8 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
               background: "#F5F8FA",
               borderRadius: "8px",
               border: "none",
+              padding: "0 18px",
+              boxSizing: "border-box",
             }}
             name={name}
             onChange={({ target: { value } }) => change({ value, name: name })}
