@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, Fragment } from "react";
 
 import { RadioInput } from "../RadioInput";
 import { TextInput } from "../TextInput";
 import { FormInput, ITextInput } from "../../tools/hooks/types";
+import { Title } from "../Title";
 
 type Props = {
   inputs: FormInput[];
@@ -18,7 +19,15 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
   <>
     {inputs.map(({ name, ...input }) =>
       input.type === "radio" ? (
-        <div key={name}>
+        <div
+          key={name}
+          style={{
+            display: "flex",
+            justifyContent: "left",
+            width: "85%",
+            position: "relative",
+          }}
+        >
           <RadioInput
             name={name}
             options={input.options}
@@ -26,12 +35,36 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             onChange={change}
           />
           {input.validation && input.touched && !input.valid ? (
-            <p>{input.validation.invalidMessage}</p>
+            <Title
+              style={{
+                color: "red",
+                position: "absolute",
+                bottom: "-19px",
+                fontSize: "12px",
+              }}
+              text={input.validation.invalidMessage}
+            />
           ) : null}
         </div>
       ) : input.type === "select" ? (
-        <div key={name}>
+        <div
+          key={name}
+          style={{
+            display: "flex",
+            justifyContent: "left",
+            width: "85%",
+            position: "relative",
+          }}
+        >
           <select
+            style={{
+              width: "100%",
+              height: "50px",
+              background: "#F5F8FA",
+              borderRadius: "8px",
+              border: "none",
+            }}
+            key={name}
             name={name}
             onChange={({ target: { value } }) => change({ value, name: name })}
           >
@@ -43,11 +76,27 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
             ))}
           </select>
           {input.validation && input.touched && !input.valid ? (
-            <p>{input.validation.invalidMessage}</p>
+            <Title
+              style={{
+                color: "red",
+                position: "absolute",
+                bottom: "-19px",
+                fontSize: "12px",
+              }}
+              text={input.validation.invalidMessage}
+            />
           ) : null}
         </div>
       ) : input.type === "checkbox" ? (
-        <div key={name}>
+        <div
+          key={name}
+          style={{
+            display: "flex",
+            justifyContent: "left",
+            width: "85%",
+            position: "relative",
+          }}
+        >
           {input.options.map((option) => (
             <>
               <input
@@ -56,24 +105,41 @@ const Inputs: FC<Props> = ({ inputs, change }) => (
                 checked={option === input.value}
                 onChange={() => change({ name, value: option })}
               />
-              <label htmlFor="">accept terms and conditions</label>
+              <label>{option}</label>
             </>
           ))}
           {input.validation && input.touched && !input.valid ? (
-            <p>{input.validation.invalidMessage}</p>
+            <Title
+              style={{
+                color: "red",
+                position: "absolute",
+                bottom: "-19px",
+                fontSize: "12px",
+              }}
+              text={input.validation.invalidMessage}
+            />
           ) : null}
         </div>
       ) : isTextInputType(input) ? (
-        <div key={name}>
+        <div key={name} style={{ position: "relative", width: "85%" }}>
           <TextInput
             type={input.type}
             placeholder={input.placeholder}
             changeHandler={({ target: { value } }) => change({ value, name })}
             name={name}
             value={input.value}
+            style={{ height: "50px", width: "100%" }}
           />
           {input.validation && input.touched && !input.valid ? (
-            <p>{input.validation.invalidMessage}</p>
+            <Title
+              style={{
+                color: "red",
+                position: "absolute",
+                bottom: "-19px",
+                fontSize: "12px",
+              }}
+              text={input.validation.invalidMessage}
+            />
           ) : null}
         </div>
       ) : null
