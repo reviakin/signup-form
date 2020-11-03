@@ -87,11 +87,11 @@ const Signup: FC<Props> = () => {
           borderRadius: "8px",
         }}
       >
-        <div style={{ margin: "32px 65px" }}>
+        <div style={{ margin: "32px 56px" }}>
           <Title
             text="Create a new account"
             style={{
-              fontFamily: "Roboto",
+              fontFamily: "SANS-SERIF",
               fontSize: "28px",
               fontWeight: "bold",
               userSelect: "none",
