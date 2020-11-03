@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC } from "react";
 
-type Props = {
+export type TextInputProps = {
   type: "text" | "password" | "email";
   placeholder: string;
   value: string;
@@ -12,7 +12,7 @@ type Props = {
   style?: CSSProperties;
 };
 
-const TextInput: FC<Props> = ({
+const TextInput: FC<TextInputProps> = ({
   type,
   placeholder,
   value,
