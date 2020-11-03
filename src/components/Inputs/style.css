@@ -38,12 +38,13 @@
   width: 8px;
   border-radius: 50%;
   position: absolute;
-  content: "∨";
+  content: "✓";
   color: #0094ff;
   display: inline-block;
   left: 2px;
   font-weight: bold;
   top: -2px;
+  left: 0px;
 }
 
 .text-input {
