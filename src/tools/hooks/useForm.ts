@@ -68,12 +68,12 @@ const reducer = (state: State, action: Actions): State => {
       input.name === name && isSelectInputType(input)
         ? {
             ...input,
-            value: value === input.value ? null : value,
+            value: value === input.value || !value ? null : value,
             touched: true,
             valid: input.validation
               ? checkInputValid({
                   validation: input.validation,
-                  value: value === input.value ? null : value,
+                  value: value === input.value || !value ? null : value,
                 })
               : true,
           }
