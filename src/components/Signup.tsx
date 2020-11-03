@@ -5,7 +5,7 @@ import { Title } from "./Title";
 import { signUpInputs } from "../data";
 import { gql, useMutation } from "@apollo/client";
 import { Box } from "../tools";
-import { omit } from "lodash/fp";
+import { pick } from "lodash/fp";
 
 const SIGN_UP = gql`
   mutation Signup($input: SignupInput!) {
@@ -52,11 +52,13 @@ const Signup: FC<Props> = () => {
     signupMutation({ variables: { input } }).catch(console.log);
 
   const onSubmit = (input: any) =>
-    Box(omit("terms&condition")).fold((input) =>
-      isValidSignupInput(input)
-        ? signup(input)
-        : console.log("invalid signup input")
-    );
+    Box(input)
+      .map(pick(["name", "email", "password", "country", "gender"]))
+      .fold((input: any) =>
+        isValidSignupInput(input)
+          ? signup(input)
+          : console.log("invalid signup input")
+      );
 
   if (error) {
     console.log(error);
